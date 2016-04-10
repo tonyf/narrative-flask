@@ -3,7 +3,6 @@ from chatterbot import ChatBot
 import sys
 
 app = Flask(__name__, static_url_path='')
-app.debug = True
 
 chatbot = ChatBot(
     'Amy',
@@ -30,4 +29,5 @@ def user_spoke():
     return chatbot.get_response(text)['text']
 
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get('PORT', 5000'))
+    app.run(host='0.0.0.0', port=port)
