@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Basic ChatBot</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/js.cookie.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="page-header text-center">
+        <!-- <h1>Basic ChatBot</h1> -->
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+          <ul class="list-group js-chat-log">
+          </ul>
+
+          <div class="input-group input-group-lg">
+            <input type="text" class="form-control js-text" placeholder="Type something to begin..."/>
+            <span class="input-group-btn">
+              <button class="btn btn-primary js-say">Submit</button>
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <script>
+        function showVideo(videoID) {
+            alert("Playing Video");
+            // Show video with corresponding id
+        };
+    </script>
+    <script src="js/app.js"></script>
+    <script>
+      var csrftoken = Cookies.get('csrftoken');
+
+      function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+      }
+
+      $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
+        }
+      });
+
+      var $chatlog = $('.js-chat-log');
+      var $input = $('.js-text');
+      var $sayButton = $('.js-say');
+
+      var $rowTemplate = $('<li class="list-group-item"></li>');
+
+      $sayButton.click(function() {
+        submitInput($input, $rowTemplate, $chatlog);
+      });
+
+      $input.keydown(function(event) {
+        // Submit the input when the enter button is pressed
+        if (event.keyCode == 13) {
+          submitInput($input, $rowTemplate, $chatlog);
+        }
+      });
+    </script>
+  </body>
+</html>
