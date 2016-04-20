@@ -1,34 +1,43 @@
 <!doctype html>
 <html>
   <head>
-    <title>Basic ChatBot</title>
+    <title>Run Lola Run</title>
     <link rel="stylesheet" href="css/bootstrap.css"/>
     <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/animate.css"/>
 
     <script src="js/jquery.js"></script>
     <script src="js/js.cookie.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script src="js/splash.js"></script>
 
   </head>
-  <body>
-
+  <section id="splash">
     <div class="container">
-      <div class="page-header text-center">
-        <!-- <h1>Basic ChatBot</h1> -->
+      <img src="img/phone.png" class="animated infinite pulse" onclick="closeSplash();" />
+      <br><h2>Pickup the Phone</h2>
+    </div>
+  </section>
+  <body>
+    <div id="background">
+    </div>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" id="brand">Run Lola Run</a>
+        </div>
       </div>
-
+    </nav>
+    <div class="container">
       <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
-          <ul class="list-group js-chat-log">
-          </ul>
-
+          <ul class="list-group js-chat-log"></ul>
           <div class="input-group input-group-lg">
             <input type="text" class="form-control js-text" placeholder="Type something to begin..."/>
             <span class="input-group-btn">
               <button class="btn btn-primary js-say">Submit</button>
             </span>
           </div>
-
         </div>
       </div>
     </div>

@@ -1,0 +1,85 @@
+body {
+  color: #EEEEEE;
+  background-color: #171616;
+  font-family: "Avenir Next", Avenir, sans-serif;
+}
+
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100vh;
+    background-image: url(../img/lola.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.8;
+    filter:alpha(opacity=80);
+}
+
+.navbar {
+  background-color: rgba(57, 57, 57, 0.5);
+  border: none;
+}
+
+#splash {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background-color: #171616;
+  z-index: 10000;
+  text-align: center;
+}
+
+#splash .container {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#splash h2 {
+  font-weight: 500;
+}
+
+#splash img {
+  width: 125px;
+  height: 125px;
+}
+
+#brand {
+  color: #EEEEEE;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 600;
+  padding-left: 25px;
+}
+
+a {
+  color: #EEEEEE;
+}
+
+.btn-primary {
+  background-color: #CD3C3C;
+  color: #EEEEEE;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #E54444;
+  color: #EEEEEE;
+  border: none;
+}
+
+.form-control {
+  position: relative;
+  background-color: rgba(216, 216, 216, 0.2);
+  color: #EEEEEE;
+  border: none;
+}
+
+.list-group-item {
+  background-color: rgba(216, 216, 216, 0.2);
+  color: #EEEEEE;
+}
