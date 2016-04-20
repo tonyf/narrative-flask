@@ -73,12 +73,14 @@
       var $rowTemplate = $('<li class="list-group-item"></li>');
 
       $sayButton.click(function() {
-        submitInput($input, $rowTemplate, $chatlog);
+        if ($input.length > 0) {
+          submitInput($input, $rowTemplate, $chatlog);
+        }
       });
 
       $input.keydown(function(event) {
         // Submit the input when the enter button is pressed
-        if (event.keyCode == 13) {
+        if (event.keyCode == 13 && $input.length > 0) {
           submitInput($input, $rowTemplate, $chatlog);
         }
       });
