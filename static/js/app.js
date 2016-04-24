@@ -1,18 +1,15 @@
-var Videos = {
-  FIRST: '#myLightbox',
-  SECOND: 2,
-  THIRD: 3,
-};
 
-var $dict = {};
-$dict["hi"] = Videos.FIRST;
-$dict["hello"] = Videos.SECOND;
-$dict["okay"] = Videos.FIRST;
-$dict["test"] = Videos.FIRST;
-
-var $videosWatched = [];
-var $triggerWords = ["hi"];
 var $lastPlayed = 0;
+
+var $chatlog;
+var $inputTemplate;
+var $outputTemplate;
+
+function setupApp(chatlog, inputTemplate, outputTemplate) {
+    $chatlog = chatlog;
+    $inputTemplate = inputTemplate;
+    $outputTemplate = outputTemplate;
+}
 
 function chatBotTriggered(inputText) {
     inputText = inputText.toLowerCase();
@@ -20,8 +17,8 @@ function chatBotTriggered(inputText) {
     var foundWords = [];
 
     words.forEach(function(word){
-        if ($triggerWords.indexOf(word) >= 0) {
-            foundWords.push(word);
+        if (word in $tagTable) {
+          foundWords.push(word);
         }
     });
 
@@ -32,22 +29,25 @@ function chatBotTriggered(inputText) {
 }
 
 function selectVideo(inputWords) {
-    // If we want to do anything sophisiticated as in have implied sequence
-    console.log($dict[inputWords[0]]);
-    return $dict[inputWords[0]];
+    var word = inputWords[Math.floor(Math.random() * inputWords.length)];
+    var possibleVideos = $tagTable[word];
+    return possibleVideos[Math.floor(Math.random() * possibleVideos.length)];
 }
 
-function showVideo(video) {
-
+function chatbotSays(text) {
 
 }
 
-
-function submitInput(input, rowTemplate, chatlog) {
+function submitInput(input) {
     var inputText = input.val();
     var inputData = {
       'text': inputText
     };
+
+    var inputRow = $inputTemplate.clone();
+    inputRow.text(inputText);
+    $chatlog.append(inputRow);
+    updateScroll()
 
     var $submit = $.ajax({
         type: "POST",
@@ -58,16 +58,17 @@ function submitInput(input, rowTemplate, chatlog) {
     var playVideo = chatBotTriggered(inputText);
 
     $submit.done(function(statement) {
-        var $row = rowTemplate.clone();
+        var $row = $outputTemplate.clone();
         var text = statement;
 
         if (playVideo == null) {
             $row.text(text);
-            chatlog.append($row);
+            $chatlog.append($row);
+            updateScroll();
         } else {
             text = "Try to think back..."
             $row.text(text);
-            chatlog.append($row);
+            $chatlog.append($row);
             // Add delay
             $videosWatched.push(playVideo);
             showVideo(playVideo)
