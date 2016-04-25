@@ -9,8 +9,8 @@ function showVideo(video) {
     var configuration = ({
        afterClose: function(event){
            console.log($videoResponses['video1']);
-           console.log($videoResponses[video]);
-           chatbotSays($videoResponses[video]);
+           console.log($videoResponses['' + video]);
+           chatbotSays($videoResponses['' + video]);
        }
     });
     $.featherlight($('<div class="video-lightbox-container ' + video + '"><video id="' + video + '"class="lightbox-video" width="700" height="400" autoplay><source src="http://s3.amazonaws.com/lola-videos/intro.mov" type="video/mp4"></video></div>'), configuration);
