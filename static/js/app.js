@@ -50,7 +50,8 @@ function submitInput(input) {
     var inputRow = $inputTemplate.clone();
     inputRow.text(inputText);
     $chatlog.append(inputRow);
-    updateScroll()
+    updateScroll();
+    input.val('');
 
     var $submit = $.ajax({
         type: "POST",
@@ -76,8 +77,6 @@ function submitInput(input) {
             $videosWatched.push(playVideo);
             showVideo(playVideo)
         }
-
-        input.val('');
     });
 
 

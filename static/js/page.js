@@ -13,7 +13,6 @@ function closeSplash() {
 }
 
 function closeIntro() {
-    $('#intro').hide();
+    $('#intro').fadeOut(2000);
     chatbotSays("Hi, Lola. What are you going to do?");
-    // replace with .fadeOut(2000);
 }
