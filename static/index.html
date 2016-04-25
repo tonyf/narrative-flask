@@ -86,6 +86,7 @@
       var $outputTemplate = $('<li class="list-group-item"></li>');
 
       setupApp($chatlog, $inputTemplate, $outputTemplate);
+      chatbotSays("Hi, Lola. What are you going to do?");
 
       $sayButton.click(function() {
         if ($input.length > 0) {

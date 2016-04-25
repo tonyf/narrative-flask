@@ -35,7 +35,10 @@ function selectVideo(inputWords) {
 }
 
 function chatbotSays(text) {
-
+    var $row = $outputTemplate.clone();
+    $row.text(text);
+    $chatlog.append($row);
+    updateScroll();
 }
 
 function submitInput(input) {
