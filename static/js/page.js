@@ -7,12 +7,9 @@ function updateScroll(){
 
 function showVideo(video) {
     $video = video;
-    $.featherlight($('<div class="video-lightbox-container ' + video + '"><video id="' + video + '"class="lightbox-video" width="700" height="400" autoplay><source src="http://s3.amazonaws.com/lola-videos/intro.mov" type="video/mp4"></video></div>'));
-    $(".featherlight-content").on("remove", function () {
-        alert("!!!");
-        chatbotSays($video + ' was played');
-        $video = null;
-    })
+    $.featherlight($('<div class="video-lightbox-container ' + video + '"><video id="' + video + '"class="lightbox-video" width="700" height="400" autoplay><source src="http://s3.amazonaws.com/lola-videos/intro.mov" type="video/mp4"></video></div>'), {afterClose: function() {
+        chatbotSays("Hi, Lola. What are you going to do?");
+    }});
 }
 
 function closeSplash() {
