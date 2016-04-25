@@ -14,5 +14,6 @@ function closeSplash() {
 
 function closeIntro() {
     $('#intro').hide();
+    chatbotSays("Hi, Lola. What are you going to do?");
     // replace with .fadeOut(2000);
 }
