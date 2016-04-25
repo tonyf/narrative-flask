@@ -33,7 +33,7 @@ function selectVideo(inputWords) {
     var word = inputWords[Math.floor(Math.random() * inputWords.length)];
     console.log(word);
     var possibleVideos = $tagTable[word];
-    console.log($possibleVideos);
+    console.log(possibleVideos);
     return possibleVideos[Math.floor(Math.random() * possibleVideos.length)];
 }
 
