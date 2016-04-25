@@ -1,3 +1,3 @@
 var $tagTable = {
-  'tag1': 'video1'
+  'tag1': ['video1']
 };
