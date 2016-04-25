@@ -4,7 +4,7 @@ function updateScroll(){
 }
 
 function showVideo(video) {
-    $('body').append('<div style="visibility:hidden"><div class="video-lightbox-container ' + video + '"><video id="' + video + '"class="lightbox-video" width="700" height="400" autoplay><source src="http://s3.amazonaws.com/lola-videos/intro.mov" type="video/mp4"></video></div></div>');
+    $('body').append('<div style="position: absolute; visibility:hidden"><div style="position: relative;" class="video-lightbox-container ' + video + '"><video id="' + video + '"class="lightbox-video" width="700" height="400" autoplay><source src="http://s3.amazonaws.com/lola-videos/intro.mov" type="video/mp4"></video></div></div>');
     $('#' + video).addEventListener('ended',handler,false);
     function handler(e) {
         closeVideo();
