@@ -9,7 +9,6 @@ function showVideo(video) {
     $video = video;
     var configuration = ({
        afterClose: function(event){
-         alert(event);
          chatbotSays("Hi, Lola. What are you going to do?");
        }
     });
