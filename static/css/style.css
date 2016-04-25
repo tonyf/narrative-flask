@@ -124,3 +124,7 @@ a {
   font-weight: 600;
   margin-bottom: 15px;
 }
+
+.featherlight-content {
+    background: black;
+}
