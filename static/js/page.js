@@ -1,4 +1,5 @@
 var $video;
+var $videoReponses = {"video1" : "Okay, okay, okay"};
 
 function updateScroll(){
     var element = document.getElementById("chatlog");

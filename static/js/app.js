@@ -29,8 +29,11 @@ function chatBotTriggered(inputText) {
 }
 
 function selectVideo(inputWords) {
+    console.log($tagTable);
     var word = inputWords[Math.floor(Math.random() * inputWords.length)];
+    console.log(word);
     var possibleVideos = $tagTable[word];
+    console.log($possibleVideos);
     return possibleVideos[Math.floor(Math.random() * possibleVideos.length)];
 }
 
@@ -75,8 +78,6 @@ function submitInput(input) {
             $chatlog.append($row);
             // Add delay
             // $videosWatched.push(playVideo);
-            
-            console.log("Video: " + playVideo);
             showVideo(playVideo);
         }
     });
