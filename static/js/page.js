@@ -9,6 +9,7 @@ function showVideo(video) {
     var configuration = ({
        afterClose: function(event){
            console.log($videoResponses['video1']);
+           console.log(video);
            console.log($videoResponses['' + video]);
            chatbotSays($videoResponses['' + video]);
        }
