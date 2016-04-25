@@ -1,4 +1,4 @@
-var $videoReponses = {"video1" : "Okay, okay, okay"};
+var $videoReponses = {video1 : "Okay, okay, okay"};
 
 function updateScroll(){
     var element = document.getElementById("chatlog");
@@ -8,7 +8,8 @@ function updateScroll(){
 function showVideo(video) {
     var configuration = ({
        afterClose: function(event){
-         chatbotSays($videoReponses[video]);
+           console.log($videoReponses[video]);
+           chatbotSays($videoReponses[video]);
        }
     });
     $.featherlight($('<div class="video-lightbox-container ' + video + '"><video id="' + video + '"class="lightbox-video" width="700" height="400" autoplay><source src="http://s3.amazonaws.com/lola-videos/intro.mov" type="video/mp4"></video></div>'), configuration);
