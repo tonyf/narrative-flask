@@ -75,6 +75,7 @@ function submitInput(input) {
             $chatlog.append($row);
             // Add delay
             // $videosWatched.push(playVideo);
+            
             console.log("Video: " + playVideo);
             showVideo(playVideo);
         }
