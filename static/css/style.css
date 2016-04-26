@@ -62,6 +62,16 @@ body {
   transform: translateY(-50%);
 }
 
+#about {
+  color: #EEEEEE;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 600;
+  position:fixed;
+  right: 24px;
+ 
+}
+
 #brand {
   color: #EEEEEE;
   font-size: 24px;
