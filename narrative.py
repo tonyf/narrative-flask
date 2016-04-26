@@ -11,10 +11,13 @@ def index():
 
 @app.route('/api/chatbot/', methods=['POST'])
 def user_spoke():
-    text = request.form['text']
+    inputText = request.form['text']
     videoPlayed = request.form['videoPlayed']
     isLost = request.form['isLost']
-    return chatbot.get_response(text, videoPlayed, isLost)
+
+    outputText = chatbot.get_response(inputText, videoPlayed, isLost)
+    response = jsonify(text=inputText)
+    return response
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 33507))
