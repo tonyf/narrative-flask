@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, render_template, json
-from chatbot import ChatBot
+from chatbot import Chatbot
 import sys
 import os
 

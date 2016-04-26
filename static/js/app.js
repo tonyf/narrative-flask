@@ -47,7 +47,7 @@ function chatbotSays(text) {
 }
 
 function submitInput(input) {
-    var playVideo = chatBotTriggered(inputText);
+    var playVideo = chatBotTriggered(input);
     var inputText = input.val();
     var inputData = {
       'text': inputText,
