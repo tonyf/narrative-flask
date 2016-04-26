@@ -5,6 +5,8 @@ var $chatlog;
 var $inputTemplate;
 var $outputTemplate;
 
+var $responsesSinceLastVideo = 0;
+
 function setupApp(chatlog, inputTemplate, outputTemplate) {
     $chatlog = chatlog;
     $inputTemplate = inputTemplate;
@@ -45,10 +47,19 @@ function chatbotSays(text) {
 }
 
 function submitInput(input) {
+    var playVideo = chatBotTriggered(inputText);
     var inputText = input.val();
     var inputData = {
-      'text': inputText
+      'text': inputText,
+      'videoPlayed': false,
+      'isLost': false
     };
+    if (playVideo != null) {
+        inputData['videoPlayed'] = true;
+    }
+    if ($responsesSinceLastVideo > 4) {
+        inputData['isLost'] = true;
+    }
 
     var inputRow = $inputTemplate.clone();
     inputRow.text(inputText);
@@ -62,24 +73,18 @@ function submitInput(input) {
         data: inputData,
     });
 
-    var playVideo = chatBotTriggered(inputText);
-
     $submit.done(function(statement) {
         var $row = $outputTemplate.clone();
         var text = statement;
 
-        if (playVideo == null) {
-            $row.text(text);
-            $chatlog.append($row);
-            updateScroll();
-        } else {
-            text = "Try to think back..."
-            $row.text(text);
-            $chatlog.append($row);
-            // Add delay
-            // $videosWatched.push(playVideo);
+        if (playVideo != null) {
+            $responsesSinceLastVideo = 0;
             showVideo(playVideo);
         }
+
+        $row.text(text);
+        $chatlog.append($row);
+        updateScroll();
     });
 
 
