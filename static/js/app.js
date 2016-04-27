@@ -17,6 +17,7 @@ function chatBotTriggered(inputText) {
     inputText = inputText.toLowerCase();
     var words = inputText.split(" ");
     var foundWords = [];
+    console.log("HEREE");
 
     words.forEach(function(word){
         if (word in $tagTable) {
@@ -49,6 +50,7 @@ function chatbotSays(text) {
 function submitInput(input) {
     var inputText = input.val();
     var playVideo = chatBotTriggered(inputText);
+    console.log("!!!!" + playVideo);
     var inputData = {
       'text': inputText,
       'videoPlayed': false,
@@ -75,7 +77,8 @@ function submitInput(input) {
 
     $submit.done(function(statement) {
         var $row = $outputTemplate.clone();
-        var text = statement;
+        var text = statement['text'];
+        console.log("Here" + text);
 
         if (playVideo != null) {
             $responsesSinceLastVideo = 0;

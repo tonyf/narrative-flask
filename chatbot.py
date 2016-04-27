@@ -12,9 +12,9 @@ class Chatbot(object):
 
     def get_response(self, input_text, videoPlayed, isLost):
         if videoPlayed:
-            return random.choice(starters)
+            return random.choice(Chatbot.starters)
         if input_text[-1] == '?':
-            return random.choice(questions)
+            return random.choice(Chatbot.questions)
         if isLost:
-            return random.choice(extenders)
-        return random.choice(general)
+            return random.choice(Chatbot.extenders)
+        return random.choice(Chatbot.general)
