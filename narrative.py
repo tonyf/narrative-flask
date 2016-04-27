@@ -12,16 +12,13 @@ def index():
 
 @app.route('/api/chatbot/', methods=['POST'])
 def user_spoke():
-    print("Got here")
     inputText = request.form['text']
     videoPlayed = request.form['videoPlayed'] == 'true'
     isLost = request.form['isLost'] == 'true'
+    shouldEnd = request.form['last'] == 'true'
 
-    print("Input: " + inputText + " Video was played: " + str(videoPlayed) + " User is lost: " + str(isLost))
-
-    outputText = chatbot.get_response(inputText, videoPlayed, isLost)
+    outputText = chatbot.get_response(inputText, videoPlayed, isLost, shouldEnd)
     response = jsonify(text=outputText)
-    print("Output: " + outputText)
     return response
 
 if __name__ == '__main__':
