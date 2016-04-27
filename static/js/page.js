@@ -1,5 +1,3 @@
-var $videoResponses = {video1 : "Okay, okay, okay"};
-
 function updateScroll(){
     var element = document.getElementById("chatlog");
     element.scrollTop = element.scrollHeight;
@@ -11,16 +9,21 @@ function showVideo(video) {
        }
     });
 
+    pauseMusic();
+
     $.featherlight($('<div class="video-lightbox-container ' + video + '"><video id="' + video + '"class="lightbox-video" width="700" height="400" autoplay><source src="http://s3.amazonaws.com/lola-videos/' + video + '" type="video/mp4"></video></div>'), configuration);
 
     document.getElementById(video).addEventListener('ended',myHandler,false);
     function myHandler(e) {
         closeVideo();
+        playMusic();
     }
 }
 
 function closeSplash() {
     $('#splash').fadeOut(2000);
+    pickupPhone();
+    playMusic();
     $('#intro_video').get(0).play();
 }
 

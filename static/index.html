@@ -25,17 +25,17 @@
   </section>
   <section id="intro">
     <div class="container">
-        <video id="intro_video" width="500" height="500" preload>
+        <video id="intro_video" width="500" height="500" controls preload muted>
           <source src="http://s3.amazonaws.com/lola-videos/Intro.mov" type="video/mp4">
         </video>
     </div>
   </section>
 
   <script>
-      document.getElementById('intro_video').addEventListener('ended',myHandler,false);
-      function myHandler(e) {
-          closeIntro();
-      }
+    document.getElementById('intro_video').addEventListener('ended',myHandler,false);
+    function myHandler(e) {
+      closeIntro();
+    }
 
   </script>
   <body>
@@ -87,7 +87,16 @@
       var $inputTemplate = $('<li class="list-group-item inputText"></li>');
       var $outputTemplate = $('<li class="list-group-item"></li>');
 
-      setupApp($chatlog, $inputTemplate, $outputTemplate);
+      var phone = new Audio("http://s3.amazonaws.com/lola-videos/ringingPhone.mp3");
+      phone.loop = true;
+      phone.addEventListener('canplay', function() {
+          phone.play(); //this function will start the music
+      });
+
+      var music = new Audio("http://s3.amazonaws.com/lola-videos/soundtrack.mp3");
+      music.loop = true;
+
+      setupApp($chatlog, $inputTemplate, $outputTemplate, phone, music);
 
       $sayButton.click(function() {
         if ($input.length > 0) {

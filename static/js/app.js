@@ -7,10 +7,15 @@ var $outputTemplate;
 
 var $responsesSinceLastVideo = 0;
 
-function setupApp(chatlog, inputTemplate, outputTemplate) {
+var $phone;
+var $music;
+
+function setupApp(chatlog, inputTemplate, outputTemplate, phone, music) {
     $chatlog = chatlog;
     $inputTemplate = inputTemplate;
     $outputTemplate = outputTemplate;
+    $phone = phone;
+    $music = music;
 }
 
 function chatBotTriggered(inputText) {
@@ -94,4 +99,16 @@ function submitInput(input) {
     $submit.fail(function() {
         // TODO: Handle errors
     });
+}
+
+function pickupPhone() {
+    $phone.pause();
+}
+
+function pauseMusic() {
+    $music.pause();
+}
+
+function playMusic() {
+    $music.play();
 }
