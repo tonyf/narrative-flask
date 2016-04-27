@@ -1,4 +1,4 @@
-var timePercent = 99;
+// var timePercent = 99;
 
 function updateScroll(){
     var element = document.getElementById("chatlog");
