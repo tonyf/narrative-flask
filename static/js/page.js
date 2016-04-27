@@ -23,7 +23,7 @@ function showVideo(video) {
 function closeSplash() {
     $('#splash').fadeOut(2000);
     pickupPhone();
-    playMusic();
+    startMusic();
     $('#intro_video').get(0).play();
 }
 

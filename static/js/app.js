@@ -102,13 +102,19 @@ function submitInput(input) {
 }
 
 function pickupPhone() {
-    $phone.pause();
+    $phone.get(0).pause();
 }
 
 function pauseMusic() {
-    $music.pause();
+    $music.animate({volume: 0}, 1000, function () {
+    });
 }
 
 function playMusic() {
-    $music.play();
+    $music.animate({volume: 1}, 1000, function () {
+    });
+}
+
+function startMusic() {
+    $music.get(0).play();
 }

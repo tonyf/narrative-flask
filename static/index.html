@@ -15,7 +15,13 @@
     <script src="//cdn.rawgit.com/noelboss/featherlight/1.4.0/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/page.js"></script>
 
+    <audio id="phone" autoplay loop>
+        <source src="http://s3.amazonaws.com/lola-videos/ringingPhone.mp3" type="audio/mp3">
+    </audio>
 
+    <audio id="music" loop>
+        <source src="http://s3.amazonaws.com/lola-videos/soundtrack.mp3" type="audio/mp3">
+    </audio>
   </head>
   <section id="splash">
     <div class="container">
@@ -87,14 +93,8 @@
       var $inputTemplate = $('<li class="list-group-item inputText"></li>');
       var $outputTemplate = $('<li class="list-group-item"></li>');
 
-      var phone = new Audio("http://s3.amazonaws.com/lola-videos/ringingPhone.mp3");
-      phone.loop = true;
-      phone.addEventListener('canplay', function() {
-          phone.play(); //this function will start the music
-      });
-
-      var music = new Audio("http://s3.amazonaws.com/lola-videos/soundtrack.mp3");
-      music.loop = true;
+      var phone = $('#phone');
+      var music = $('#music');
 
       setupApp($chatlog, $inputTemplate, $outputTemplate, phone, music);
 
