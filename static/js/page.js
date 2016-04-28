@@ -48,7 +48,7 @@ function closeVideo() {
 function endExperience() {
     setTimeout(function(){
         pauseMusic();
-        var html = '<section id="end"><div class="container"><div style="margin-bottom: -20px;"><h2><strong><i>Time is up. Did you solve the puzzle?</i></strong></h2><a href="https://itunes.apple.com/US/movie/id995070180"><h3 style="font-weight: 300;">Watch the feature film</h3></a></div><video id="intro_video" width="700" height="500" preload muted><source src="http://s3.amazonaws.com/lola-videos/trailer.mp4" type="video/mp4"></video></div></section>';
+        var html = '<section id="end"><div class="container"><div><h2><strong><i>Time is up. Did you solve the puzzle?</i></strong></h2><a href="https://itunes.apple.com/US/movie/id995070180"><h3 style="font-weight: 300;">Watch the feature film</h3></a></div><video id="intro_video" width="700" height="500" preload muted><source src="http://s3.amazonaws.com/lola-videos/trailer.mp4" type="video/mp4"></video></div></section>';
 
         $(html).hide().appendTo('#endContainer').fadeIn(1000);
     }, 4000);
