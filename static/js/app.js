@@ -12,6 +12,7 @@ var $music;
 
 var $videosWatched = 0;
 var $shouldEnd = false;
+var $playedVideos = [];
 
 function setupApp(chatlog, inputTemplate, outputTemplate, phone, music) {
     $chatlog = chatlog;
@@ -41,7 +42,24 @@ function chatBotTriggered(inputText) {
 function selectVideo(inputWords) {
     var word = inputWords[Math.floor(Math.random() * inputWords.length)];
     var possibleVideos = $tagTable[word];
-    return possibleVideos[Math.floor(Math.random() * possibleVideos.length)];
+    if (possibleVideos.length === 0) {
+        return null;
+    }
+
+    // Select video and remove it from dictionary
+    var selectedVideo = possibleVideos[Math.floor(Math.random() * possibleVideos.length)];
+    var selectedIndex = $tagTable[word].indexOf(selectedVideo);
+    if (selectedIndex > -1) {
+        $tagTable[word].splice(selectedIndex, 1);
+    }
+
+    var playedIndex = $playedVideos.indexOf(selectedVideo);
+    if (playedIndex > -1) {
+        // if the video was already playedIndex
+        return selectedVideo(inputWords);
+    }
+    $playedVideos.push(selectedVideo)
+    return selectedVideo
 }
 
 function chatbotSays(text) {
